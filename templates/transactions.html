@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block name %}
+Signed in as {{ name }}
+{% endblock %}
+
+{% block flash %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="{{ category }}-message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+
+{% block main %}
+    <script>
+        // Get today's date in the format "YYYY-MM-DD"
+        const today = new Date().toISOString().split('T')[0];
+
+        // Set today's date as the default value for the input field
+        document.getElementById('date').value = today;
+
+    </script>
+    <style>
+    a {
+        text-decoration: none;
+        color: grey;
+    }
+    </style>
+    <br><br><br><br>
+
+    <form action="/transactions" method="post" class="row g-3">
+      <div class="col-md-2">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" id="date" class="form-control" name="date" min="2022-01-01" max="2050-12-31" value="{{ form.date }}" onchange="formatDate()">
+      </div>
+      <div class="col-md-4">
+        <label for="particulars" class="form-label">Particulars</label>
+        <input id="particulars" type="text" class="form-control" placeholder="Provide the details of the transaction"  name="particulars" value="{{ form.particulars }}">
+      </div>
+      <div class="col-md-2">
+        <label for="type" class="form-label">Type of transaction</label>
+        <select id="type" name="type" class="form-select">
+            <option disabled selected>Choose...</option>
+            <option {% if form.type == 'Payment' %} selected {% endif %}>Payment</option>
+            <option {% if form.type == 'Receipt' %} selected {% endif %}>Receipt</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="account" class="form-label">Cash/Bank</label>
+        <select id="account" name="account" class="form-select">
+          <option disabled selected>Select account</option>
+          <option {% if form.account == 'Cash' %} selected {% endif %}>Cash</option>
+          <option {% if form.account == 'Bank' %} selected {% endif %}>Bank</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="amount" class="form-label">Amount</label>
+        <input id="amount" class="form-control" name="amount" placeholder="Amount" type="number" step=0.01 value="{{ form.amount }}">
+      </div><div></div>
+      <div class="d-grid gap-2 col-6 mx-auto"><button class="btn btn-dark mb-2" type="submit">Upload transaction</button></div>
+     </form>
+
+
+{% endblock %}

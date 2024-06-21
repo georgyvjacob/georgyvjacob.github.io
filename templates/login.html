@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block main %}
+
+<style>
+  a {
+      text-decoration: none;
+      color: grey;
+  }
+  a:hover {
+    color: #fc0366;
+  }
+  .quote {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px solid #008080; /* Teal border */
+      border-radius: 10px;
+      background-color: #e0f7fa; /* Light teal background */
+      display: inline-block;
+      width: 100%;
+      vertical-align: top;
+  }
+  .quote-author {
+      color: #008080; /* Teal color for author name */
+  }
+</style>
+<div class="quote">
+    "Spending without tracking is like racing a Formula One car with no brakes. It’s only a matter of time before you crash into financial ruin." <span class="quote-author">— Georgy Jacob</span>
+</div>
+<br><br><br>
+
+<form action="/login" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control w-auto" name="username" placeholder="Username" type="text" value="{{ form.username }}" required>
+    </div>
+    <div class="mb-3">
+        <input class="form-control w-auto" name="password" placeholder="Password" type="password" value="{{ form.password }}" required>
+    </div>
+    <div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-primary btn-block" type="submit">Login</button>
+    </div>
+</form>
+<div class="mb-3">
+  <br>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/forgot">Forgot Password?</a>
+</div>
+
+{% endblock %}

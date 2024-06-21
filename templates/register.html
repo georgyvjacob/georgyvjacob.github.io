@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+<form action="/register" method="post">
+    <div class="mb-3">
+        <input autocomplete="off" autofocus class="form-control w-auto" name="name" placeholder="Name" type="text" value="{{ form.name }}">
+    </div>
+    <div class="mb-3">
+        <input autocomplete="off" class="form-control w-auto" name="username" placeholder="Username" type="text" value="{{ form.username }}">
+    </div>
+    <div class="mb-3">
+        <input class="form-control w-auto" name="password" placeholder="Password" type="password" value="{{ form.password }}">
+    </div>
+    <div class="mb-3">
+        <input class="form-control w-auto" name="confirmation" placeholder="Confirm Password" type="password" value="{{ form.confirmation }}">
+    </div>
+    <div class="mb-3">
+        <input class="form-control w-auto" name="pin" placeholder="Enter 4 digit PIN" type="password" value="{{ form.pin }}">
+    </div>
+    <div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-success btn-block" type="submit">Register</button>
+    </div>
+</form>
+{% endblock %}
