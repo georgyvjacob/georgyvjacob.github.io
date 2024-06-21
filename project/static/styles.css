@@ -1,0 +1,155 @@
+.navbar-nav .nav-link {
+    color: white; /* Default color for navbar links */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #00DFAE; /* Color for navbar links when hovered over */
+}
+.navbar-brand span:hover:nth-child(1) {
+    color: #008080; /* Change the color of the first span when hovered */
+}
+
+.navbar-brand span:hover:nth-child(2) {
+    color: #5D3FD3; /* Change the color of the second span when hovered */
+}
+
+.navbar-brand span:hover:nth-child(3) {
+    color: #CC5500; /* Change the color of the third span when hovered */
+}
+
+.navbar-brand span:hover:nth-child(4) {
+    color: #2e944b; /* Change the color of the fourth span when hovered */
+}
+
+.navbar-brand span:hover:nth-child(5) {
+    color: #5D3FD3; /* Change the color of the fifth span when hovered */
+}
+
+.navbar-brand span:hover:nth-child(6) {
+    color: #ea433b; /* Change the color of the sixth span when hovered */
+}
+
+nav .navbar-brand
+{
+    font-size: xx-large;
+    margin-left: 10px;
+}
+
+/* Colors for brand */
+nav .navbar-brand .blue
+{
+    color: #537fbe;
+}
+nav .navbar-brand .indigo
+{
+    color: #5D3FD3;
+}
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+nav .navbar-brand .orange
+{
+    color: #CC5500;
+}
+nav .navbar-brand .teal
+{
+    color: #008080;
+}
+nav .navbar-brand .vio
+{
+    color: #800020;
+}
+nav .navbar-brand .brow
+{
+    color: #900C3F;
+}
+nav .navbar-brand .white
+{
+    color: #FFFFF0;
+}
+.white {
+    color: white;
+}
+.profile {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 7.5px;
+    cursor: pointer;
+}
+.dropdown {
+    position: relative;
+    display: flex;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 90px;
+    z-index: 1;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+  }
+
+  .dropdown:hover .dropdown-content {
+    position: relative;
+    display: inline;
+  }
+
+.scratch-embed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+body {
+    background-color: #FFFFFF;
+    color: #212529;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    padding: 0;
+
+}
+.error-message, .success-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.error-message {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.success-message {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+.instructions {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+.container1 {
+    width: 100%; /* Set the width of the container to 100% of the viewport */
+    height: 100%; /* Set the height of the container to 100% of the viewport height */
+    display: flex; /* Use flexbox to center the image */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+}
+

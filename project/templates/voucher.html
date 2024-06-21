@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Vouchers
+{% endblock %}
+
+{% if session["user_id"] %}
+{% block name %}
+Signed in as {{ name }}
+{% endblock %}
+{% endif %}
+
+{% block main %}
+<script>
+    function autoSubmit() {
+        var form = document.getElementById("filterForm");
+        form.submit();
+    }
+</script>
+
+<style>
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+    .form-inline .form-group {
+        display: inline-block;
+        margin-right: 15px;
+    }
+    .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+    .table th, .table td {
+        padding: 1rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+    }
+</style>
+
+<br>
+<form method="get" action="/voucher" class="form-inline" id="filterForm">
+    <div class="form-group">
+        <label class="form-label" for="sort_by">Sort By:</label>
+        <select id="sort_by" name="sort_by" class="form-select" onchange="autoSubmit()">
+            <option value="date" {% if sort_by == "date" %}selected{% endif %}>Date</option>
+            <option value="pay_to" {% if sort_by == "pay_to" %}selected{% endif %}>Paid To</option>
+            <option value="pay_for" {% if sort_by == "pay_for" %}selected{% endif %}>Paid For</option>
+            <option value="account" {% if sort_by == "account" %}selected{% endif %}>Account</option>
+            <option value="amount" {% if sort_by == "amount" %}selected{% endif %}>Amount</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="order">Order:</label>
+        <select id="order" name="order" class="form-select" onchange="autoSubmit()">
+            <option value="ascending" {% if order == "ascending" %}selected{% endif %}>Ascending</option>
+            <option value="descending" {% if order == "descending" %}selected{% endif %}>Descending</option>
+        </select>
+    </div>
+</form>
+<br>
+<div class="table-container">
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th>Date</th>
+                <th>Paid To</th>
+                <th>Paid For</th>
+                <th>
+                    Account
+                    <div class="dropdown">
+                        <select id="account" name="account" class="form-select" onchange="autoSubmit()" form="filterForm">
+                            <option value="all" {% if account == "all" %}selected{% endif %}>All</option>
+                            <option value="Cash" {% if account == "Cash" %}selected{% endif %}>Cash</option>
+                            <option value="Bank" {% if account == "Bank" %}selected{% endif %}>Bank</option>
+                        </select>
+                    </div>
+                </th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.date }}</td>
+                    <td>{{ payment.pay_to }}</td>
+                    <td>{{ payment.pay_for }}</td>
+                    <td>{{ payment.account }}</td>
+                    <td>{{ payment.amount }}</td>
+                    <td><a class="btn btn-primary" href="{{ url_for('print_voucher', payment_id=payment.id) }}">Print</a>
+                    </div></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
